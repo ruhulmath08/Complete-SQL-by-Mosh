@@ -1,3 +1,8 @@
+ <style>
+  .jjj{
+   background: #fff;
+  }
+</style>
  <h2>Complete-SQL-by-Mosh</h2>
 <ul>
 <li>
@@ -66,7 +71,7 @@
     <img src="git-html/images/customer_table.png" title="All data in customer table"> 
     <h3 id="data-in-customer">SQL script</h3>    
     <h3>Select all data from customers table</h3>
-        <pre>
+        <pre class="jjj">
             <code>
                 SELECT * FROM customers;
             </code>
