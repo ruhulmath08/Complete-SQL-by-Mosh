@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript" 
-        src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js">
     </script>
     <!-- link for highlight.js -->
     <script>hljs.initHighlightingOnLoad();</script>
