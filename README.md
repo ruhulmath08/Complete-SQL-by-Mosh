@@ -20,6 +20,8 @@
         </li>
     </ol>
 </li>
+<!-- ######################################################## -->
+    <hr />
 <li>
     <a href="#date-from-a-multiple-table">Retrieving Data From Multiple Tables</a>
 </li>
