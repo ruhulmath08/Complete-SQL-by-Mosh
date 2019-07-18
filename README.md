@@ -1,15 +1,10 @@
- <style>
-  .jjj{
-   background: #fff;
-  }
-</style>
- <h2>Complete-SQL-by-Mosh</h2>
+<h2>Complete-SQL-by-Mosh</h2>
 <ul>
 <li>
     <a href="#date-from-a-single-table">Retrieving Data From a Single Table</a>
     <ol>
         <li>
-            <a href="#data-in-customer">Data in <b>customer</b> table</a>
+            <a href="#data-in-customer-table">Data in <b>customer</b> table</a>
         </li>
         <li>
             <a href="">The Select Statement</a>
@@ -69,14 +64,27 @@
     <h2 id="date-from-a-single-table">Retrieving Data From a Single Table</h2>
     <h3>1) Data in customer table</h3>
     <img src="git-html/images/customer_table.png" title="All data in customer table"> 
-    <h3 id="data-in-customer">SQL script</h3>    
-    <h3>Select all data from customers table</h3>
-        <pre class="jjj">
-            <code>
-                SELECT * FROM customers;
-            </code>
-        </pre>
-
+    <h3>SQL script</h3>    
+    <h3 id="data-in-customer-table">Select all data from customers table</h3>
+    <pre>
+        <code>
+            SELECT * FROM customers;
+        </code>
+    </pre>     
+    <hr />    
+    <h3>Select a specefic element</h3>
+    <pre>
+        <code>
+            SELECT * FROM customers WHERE last_name = 'MacCaffrey';
+        </code>
+    </pre>
+    <hr />    
+    <h3>Short table data</h3>
+    <pre>
+        <code>
+            SELECT * FROM customers WHERE birth_date < '1990-01-01' ORDER BY city;
+        </code>
+    </pre>     
     <!--Details about "Data From a Single END" -->
     <hr />
 
