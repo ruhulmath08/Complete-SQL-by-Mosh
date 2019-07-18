@@ -1,0 +1,11 @@
+1) Use a database
+USE database_name;
+
+2) Select all data from the table
+SELECT * FROM table_name.
+
+3) Select a specefic element
+Select * FROM table_name WHERE condition
+
+4) Short a data 
+Select * FROM table_name WHERE condition ORDER BY column_name

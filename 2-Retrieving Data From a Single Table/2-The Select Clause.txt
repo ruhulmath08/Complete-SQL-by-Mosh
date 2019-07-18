@@ -1,0 +1,19 @@
+The SELECT cluse in Details:
+----------------------------
+The "SELECT *" returns all the columns present in a table. If our table contains a large number of records it may create a negative impact in the database server and the network also.
+
+We can also select a specefic number of column based on our requirement. 
+
+1) Select specfic column
+SELECT first_name, last_name, points FROM customers;
+
+2) SELECT a column and apply matmatical calculation on it
+SELECT 
+    first_name, 
+    last_name, 
+    points, 
+    points + 100 AS 'points with discount' 
+FROM customers;
+
+
+

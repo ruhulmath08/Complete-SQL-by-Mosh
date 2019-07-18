@@ -1,0 +1,60 @@
+4-The AND OR and NOT Operators:
+-------------------------------
+How to combind multiple search conditions, when filtering data
+
+Precedent:
+AND
+OR
+
+SELECT *
+FROM customers
+WHERE city = 'Waltham' AND state = 'VA'; 
+
+SELECT *
+FROM customers
+WHERE city = 'Waltham' OR state = 'VA';
+
+SELECT *
+FROM customers
+WHERE (city = 'Waltham' OR state = 'VA') AND last_name = 'Brushfield';
+
+Note:
+-----
+When combaining multiple logical operator the order is iportant
+
+mysql> SELECT *FROM customers WHERE city = 'Waltham' OR state = 'VA' AND last_name = 'Brushfield';
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+| customer_id | first_name | last_name  | birth_date | phone        | address                | city    | state | points |
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+|           1 | Babara     | MacCaffrey | 1986-03-28 | 781-932-9754 | 0 Sage Terrace         | Waltham | VA    |   2273 |
+|           2 | Ines       | Brushfield | 1986-04-13 | 804-427-9456 | 14187 Commercial Trail | Hampton | VA    |    947 |
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+
+Here "state = 'VA' AND last_name = 'Brushfield'" is executed first
+
+mysql> SELECT *FROM customers WHERE (city = 'Waltham' OR state = 'VA') AND last_name = 'Brushfield';
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+| customer_id | first_name | last_name  | birth_date | phone        | address                | city    | state | points |
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+|           2 | Ines       | Brushfield | 1986-04-13 | 804-427-9456 | 14187 Commercial Trail | Hampton | VA    |    947 |
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+
+Here "city = 'Waltham' OR state = 'VA'" is executed first, because we use ().
+
+Exercise:
+---------
+From the order_items table, get the items
+for order #6
+where the total price is greater then 30
+
+SELECT *
+FROM order_items
+WHERE order_id = 6 AND (quantity * unit_price) > 30;
+
+mysql> SELECT *FROM order_items WHERE order_id = 6 AND (quantity * unit_price) > 30;
++----------+------------+----------+------------+
+| order_id | product_id | quantity | unit_price |
++----------+------------+----------+------------+
+|        6 |          1 |        4 |       8.65 |
++----------+------------+----------+------------+
+
