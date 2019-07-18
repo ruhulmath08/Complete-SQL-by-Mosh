@@ -23,7 +23,7 @@
             <a href="">Views</a>
         </li>
         <li>
-            <a href=""></a> Procedures
+            <a href="">Procedures</a>
         </li>
         <li>
             <a href="">Triggers and Events</a>
