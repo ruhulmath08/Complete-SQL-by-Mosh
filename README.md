@@ -1,52 +1,72 @@
 <h2>Complete-SQL-by-Mosh</h2>
-
 <ul>
+<li>
+    <a href="#date-from-a-single-table">Retrieving Data From a Single Table</a>
+    <ol>
         <li>
-            <a href="#date-from-a-single-table">Retrieving Data From a Single Table</a>
+            <a href="#data-in-customer">Data in <b>customer</b> table</a>
         </li>
         <li>
-            <a href="#date-from-a-multiple-table">Retrieving Data From Multiple Tables</a>
+            <a href="">The Select Statement</a>
         </li>
         <li>
-            <a href="#insert-update-delet-date">Inserting, Updating, and Deleting Data</a>
+            <a href="#">The Select Clause</a>
         </li>
         <li>
-            <a href="#summarizing-data">Summarizing Data</a>
-        </li>
+            <a href="#">The Where Clause</a>
+        </li>              
         <li>
-            <a href="#write-complex-query">Writing Complex Query</a>
+            <a href="#">The AND OR and NOT Operators</a>
         </li>
-        <li>
-            <a href="#essential-mysql-function">Essential MySQL Functions</a>
-        </li>
-        <li>
-            <a href="#mysql-views">Views</a>
-        </li>
-        <li>
-            <a href="#stored-procedures">Stored Procedures</a> 
-        </li>
-        <li>
-            <a href="#trigger-and-events">Triggers and Events</a>
-        </li>
-        <li>
-            <a href="#transactions-and-concurrency">Transactions and Concurrency</a>
-        </li>
-        <li>
-            <a href="#mysql-data-type">Data Type</a>
-        </li>
-        <li>
-            <a href="#mysql-designing-database">Designing Databases</a>
-        </li>
-        <li>
-            <a href="#indexing-for-high-performance">Indexing for High Performance</a>
-        </li>
-        <li>
-            <a href="#mysql-securing-databases">Securing Databases</a>
-        </li>
+    </ol>
+</li>
+<li>
+    <a href="#date-from-a-multiple-table">Retrieving Data From Multiple Tables</a>
+</li>
+<li>
+    <a href="#insert-update-delet-date">Inserting, Updating, and Deleting Data</a>
+</li>
+<li>
+    <a href="#summarizing-data">Summarizing Data</a>
+</li>
+<li>
+    <a href="#write-complex-query">Writing Complex Query</a>
+</li>
+<li>
+    <a href="#essential-mysql-function">Essential MySQL Functions</a>
+</li>
+<li>
+    <a href="#mysql-views">Views</a>
+</li>
+<li>
+    <a href="#stored-procedures">Stored Procedures</a> 
+</li>
+<li>
+    <a href="#trigger-and-events">Triggers and Events</a>
+</li>
+<li>
+    <a href="#transactions-and-concurrency">Transactions and Concurrency</a>
+</li>
+<li>
+    <a href="#mysql-data-type">Data Type</a>
+</li>
+<li>
+    <a href="#mysql-designing-database">Designing Databases</a>
+</li>
+<li>
+    <a href="#indexing-for-high-performance">Indexing for High Performance</a>
+</li>
+<li>
+    <a href="#mysql-securing-databases">Securing Databases</a>
+</li>
 </ul>
 
-<!--Details about "Data From a Single Table" -->
+<!--Details about "Data From a Single Start" -->
 <h2 id="date-from-a-single-table">Retrieving Data From a Single Table</h2>
+<h3 id="data-in-customer">Data Stored in Customer Table</h3>
+<!--Details about "Data From a Single END" -->
+<hr />
+
 <h2 id="date-from-a-multiple-table">Retrieving Data From Multiple Tables</h2>
 <h2 id="insert-update-delet-date">Inserting, Updating, and Deleting Data</h2>
 <h2 id="summarizing-data">Summarizing Data</h2>
