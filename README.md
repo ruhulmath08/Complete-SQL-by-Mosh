@@ -72,7 +72,6 @@
             <a href="#mysql-securing-databases">Securing Databases</a>
         </li>
         </ul>
-
         <!--Details about "Data From a Single Start" -->
             <h2 id="date-from-a-single-table">Retrieving Data From a Single Table</h2>
             <h3>1) Data in customer table</h3>
