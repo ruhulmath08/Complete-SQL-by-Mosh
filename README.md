@@ -4,55 +4,42 @@
         <li>
             <a href="#date-from-a-single-table">Retrieving Data From a Single Table</a>
         </li>
-
         <li>
             <a href="#date-from-a-multiple-table">Retrieving Data From Multiple Tables</a>
         </li>
-
         <li>
             <a href="#insert-update-delet-date">Inserting, Updating, and Deleting Data</a>
         </li>
-
         <li>
             <a href="#summarizing-data">Summarizing Data</a>
         </li>
-
         <li>
             <a href="#write-complex-query">Writing Complex Query</a>
         </li>
-
         <li>
             <a href="#essential-mysql-function">Essential MySQL Functions</a>
         </li>
-
         <li>
             <a href="#mysql-views">Views</a>
         </li>
-
         <li>
             <a href="#stored-procedures">Stored Procedures</a> 
         </li>
-
         <li>
             <a href="#trigger-and-events">Triggers and Events</a>
         </li>
-
         <li>
             <a href="#transactions-and-concurrency">Transactions and Concurrency</a>
         </li>
-
         <li>
             <a href="#mysql-data-type">Data Type</a>
         </li>
-
         <li>
             <a href="#mysql-designing-database">Designing Databases</a>
         </li>
-
         <li>
             <a href="#indexing-for-high-performance">Indexing for High Performance</a>
         </li>
-
         <li>
             <a href="#mysql-securing-databases">Securing Databases</a>
         </li>
