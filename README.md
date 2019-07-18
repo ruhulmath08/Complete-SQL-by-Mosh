@@ -7,7 +7,7 @@
             <a href="https://bit.ly/2XZlI9c">Data in <b>customer</b> table</a>
         </li>
         <li>
-            <a href="https://bit.ly/2XZlI9c">The Select Statement</a>
+            <a href="2-Retrieving Data From a Single Table/1-The Select Statement.txt">The Select Statement</a>
         </li>
         <li>
             <a href="#select-cluse-details">The Select Clause</a>
