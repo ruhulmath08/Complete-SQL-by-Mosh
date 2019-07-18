@@ -1,7 +1,7 @@
 <h2>Complete-SQL-by-Mosh</h2>
 
 <ul>
-  <li>
+        <li>
             <a href="">Data From a Single Table</a>
         </li>
 
