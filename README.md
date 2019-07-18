@@ -4,10 +4,10 @@
     <a href="#date-from-a-single-table">Retrieving Data From a Single Table</a>
     <ol>
         <li>
-            <a href="#data-in-customer-table">Data in <b>customer</b> table</a>
+            <a href="https://bit.ly/2XZlI9c">Data in <b>customer</b> table</a>
         </li>
         <li>
-            <a href="#the-slect-statement">The Select Statement</a>
+            <a href="https://bit.ly/2XZlI9c">The Select Statement</a>
         </li>
         <li>
             <a href="#select-cluse-details">The Select Clause</a>
