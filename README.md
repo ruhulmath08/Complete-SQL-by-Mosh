@@ -1,3 +1,11 @@
+<script type="text/javascript" 
+        src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js">
+</script>
+<!-- link for highlight.js -->
+<script>hljs.initHighlightingOnLoad();</script>
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/monokai.min.css" />
+    
 <h2>Complete-SQL-by-Mosh</h2>
 <ul>
 <li>
@@ -62,10 +70,19 @@
 </ul>
 
 <!--Details about "Data From a Single Start" -->
-<h2 id="date-from-a-single-table">Retrieving Data From a Single Table</h2>
-<h3 id="data-in-customer">Data Stored in Customer Table</h3>
-<!--Details about "Data From a Single END" -->
-<hr />
+    <h2 id="date-from-a-single-table">Retrieving Data From a Single Table</h2>
+    <h3>1) Data in customer table</h3>
+    <img src="images/customer_table.png" alt="customer_table image" title="All data in customer table"> 
+    <h3 id="data-in-customer">SQL script</h3>    
+    <h3>Select all data from customers table</h3>
+        <pre>
+            <code>
+                SELECT * FROM customers;
+            </code>
+        </pre>
+        
+    <!--Details about "Data From a Single END" -->
+    <hr />
 
 <h2 id="date-from-a-multiple-table">Retrieving Data From Multiple Tables</h2>
 <h2 id="insert-update-delet-date">Inserting, Updating, and Deleting Data</h2>
