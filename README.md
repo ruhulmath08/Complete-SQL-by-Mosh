@@ -16,7 +16,7 @@
             <a href="2-Retrieving Data From a Single Table/3-The Where Clause.txt">The Where Clause</a>
         </li>              
         <li>
-            <a href="2-Retrieving Data From a Single Table/4-The AND OR and NOT ">The AND OR and NOT Operators</a>
+            <a href="2-Retrieving Data From a Single Table/4-The AND OR and NOT">The AND OR and NOT Operators</a>
         </li>
     </ol>
 </li>
