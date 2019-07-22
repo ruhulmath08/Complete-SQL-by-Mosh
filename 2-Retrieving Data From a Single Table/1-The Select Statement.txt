@@ -5,7 +5,7 @@ USE database_name;
 SELECT * FROM table_name.
 
 3) Select a specefic element
-Select * FROM table_name WHERE condition
+SELECT * FROM customers WHERE last_name = 'MacCaffrey';
 
-4) Short a data 
-Select * FROM table_name WHERE condition ORDER BY column_name
+4) Short table data 
+SELECT * FROM customers WHERE birth_date < '1990-01-01' ORDER BY city;

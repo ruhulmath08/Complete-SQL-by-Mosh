@@ -1,0 +1,234 @@
+8 - The REGEXP Operator:
+------------------------
+MySQL supports another type of pattern matching operation based on the regular expressions and the REGEXP operator.
+
+a) It provide a powerful and flexible pattern match that can help us implement power search utilities for our database systems.
+b) REGEXP is the operator used when performing regular expression pattern matches. RLIKE is the synonym.
+c) It also supports a number of metacharacters which allow more flexibility and control when performing pattern matching.
+d) The backslash is used as an escape character. It’s only considered in the pattern match if double backslashes have used.
+e) Not case sensitive.
+
+PATTERN	 WHAT THE PATTERN MATCHES
+-------  ------------------------
+* ----> Zero or more instances of string preceding it
++ ---->	One or more instances of strings preceding it
+. ---->	Any single character
+| ---->	Logical OR
+? ---->	Match zero or one instances of the strings preceding it.
+^ ---->	caret(^) matches Beginning of string
+$ ---->	End of string
+[abc]  ----> Any character listed between the square brackets
+[^abc] ----> Any character not listed between the square brackets
+[A-Z]  ----> match any upper case letter.
+[a-z]  ----> match any lower case letter
+[0-9]  ----> match any digit from 0 through to 9.
+[[:<:]]----> matches the beginning of words.
+[[:>:]]----> matches the end of words.
+[:class:]---->matches a character class i.e. [:alpha:] to match letters, [:space:] to match white space, [:punct:] is match		      punctuations and [:upper:] for upper class letters.
+
+p1|p2|p3----> Alternation; matches any of the patterns p1, p2, or p3
+{n} ----> n instances of preceding element
+{m,n} ----> m through n instances of preceding element
+
+Link: https://www.geeksforgeeks.org/mysql-regular-expressions-regexp/ 
+
+##################################################################################################################################
+customers table:
+---------------
+mysql> SELECT * FROM customers;
++-------------+------------+------------+------------+--------------+------------------------+------------------+-------+--------+
+| customer_id | first_name | last_name  | birth_date | phone        | address                | city             | state | points |
++-------------+------------+------------+------------+--------------+------------------------+------------------+-------+--------+
+|           1 | Babara     | MacCaffrey | 1986-03-28 | 781-932-9754 | 0 Sage Terrace         | Waltham          | VA    |   2273 |
+|           2 | Ines       | Brushfield | 1986-04-13 | 804-427-9456 | 14187 Commercial Trail | Hampton          | VA    |    947 |
+|           3 | Freddi     | Boagey     | 1985-02-07 | 719-724-7869 | 251 Springs Junction   | Colorado Springs | CO    |   2967 |
+|           4 | Ambur      | Roseburgh  | 1974-04-14 | 407-231-8017 | 30 Arapahoe Terrace    | Orlando          | FL    |    457 |
+|           5 | Clemmie    | Betchley   | 1973-11-07 | NULL         | 5 Spohn Circle         | Arlington        | TX    |   3675 |
+|           6 | Elka       | Twiddell   | 1991-09-04 | 312-480-8498 | 7 Manley Drive         | Chicago          | IL    |   3073 |
+|           7 | Ilene      | Dowson     | 1964-08-30 | 615-641-4759 | 50 Lillian Crossing    | Nashville        | TN    |   1672 |
+|           8 | Thacher    | Naseby     | 1993-07-17 | 941-527-3977 | 538 Mosinee Center     | Sarasota         | FL    |    205 |
+|           9 | Romola     | Rumgay     | 1992-05-23 | 559-181-3744 | 3520 Ohio Trail        | Visalia          | CA    |   1486 |
+|          10 | Levy       | Mynett     | 1969-10-13 | 404-246-3370 | 68 Lawn Avenue         | Atlanta          | GA    |    796 |
++-------------+------------+------------+------------+--------------+------------------------+------------------+-------+--------+
+##################################################################################################################################
+
+1) Get the customers from customers table whose last_name contain 'field':
+--------------------------------------------------------------------------
+SELECT * 
+FROM customers 
+-- REGEXP 'field' => LIKE '%field%';
+WHERE last_name REGEXP 'field';
+
+mysql> SELECT * FROM customers WHERE last_name REGEXP 'field';
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+| customer_id | first_name | last_name  | birth_date | phone        | address                | city    | state | points |
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+|           2 | Ines       | Brushfield | 1986-04-13 | 804-427-9456 | 14187 Commercial Trail | Hampton | VA    |    947 |
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+
+2) Get the customers from customers table whose last_name must start with 'field':
+----------------------------------------------------------------------------------
+SELECT * 
+FROM customers 
+-- REGEXP '^field' => Last name must start with 'field'. Here ^ means begaining of a string
+WHERE last_name REGEXP '^field';
+
+3) Get the customers from customers table whose last_name must end with 'field':
+--------------------------------------------------------------------------------
+SELECT * 
+FROM customers 
+-- REGEXP 'field&' => Last name must end with 'field'. Here $ means end of a string
+WHERE last_name REGEXP 'field$';
+
+mysql> SELECT * FROM customers WHERE last_name REGEXP 'field$';
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+| customer_id | first_name | last_name  | birth_date | phone        | address                | city    | state | points |
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+|           2 | Ines       | Brushfield | 1986-04-13 | 804-427-9456 | 14187 Commercial Trail | Hampton | VA    |    947 |
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+
+4) Get the customers from customers table who have the word 'field' or 'mac' as the last_name:
+----------------------------------------------------------------------------------------------
+
+mysql> SELECT * FROM customers WHERE last_name REGEXP 'field|mac';
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+| customer_id | first_name | last_name  | birth_date | phone        | address                | city    | state | points |
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+|           1 | Babara     | MacCaffrey | 1986-03-28 | 781-932-9754 | 0 Sage Terrace         | Waltham | VA    |   2273 |
+|           2 | Ines       | Brushfield | 1986-04-13 | 804-427-9456 | 14187 Commercial Trail | Hampton | VA    |    947 |
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+
+5) Get the customers from customers table who have the word 'field' or 'mac' or 'rose' as the last_name:
+--------------------------------------------------------------------------------------------------------
+SELECT * 
+FROM customers 
+-- REGEXP 'field|mak|rose' => last_name contain 'field' or 'mac'
+WHERE last_name REGEXP 'field|mac|rose';
+
+mysql> SELECT * FROM customers WHERE last_name REGEXP 'field|mac|rose';
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+| customer_id | first_name | last_name  | birth_date | phone        | address                | city    | state | points |
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+|           1 | Babara     | MacCaffrey | 1986-03-28 | 781-932-9754 | 0 Sage Terrace         | Waltham | VA    |   2273 |
+|           2 | Ines       | Brushfield | 1986-04-13 | 804-427-9456 | 14187 Commercial Trail | Hampton | VA    |    947 |
+|           4 | Ambur      | Roseburgh  | 1974-04-14 | 407-231-8017 | 30 Arapahoe Terrace    | Orlando | FL    |    457 |
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+
+6) Get the customers from customers table who have last_name start with 'field' or have the word 'mac' or 'rose':
+-----------------------------------------------------------------------------------------------------------------
+SELECT * 
+FROM customers 
+-- REGEXP '^field|mac|rose' => last_name start with 'field' or have the word 'mac' or 'rose'
+WHERE last_name REGEXP '^field|mac|rose';
+
+mysql> SELECT * FROM customers WHERE last_name REGEXP '^field|mac|rose';
++-------------+------------+------------+------------+--------------+---------------------+---------+-------+--------+
+| customer_id | first_name | last_name  | birth_date | phone        | address             | city    | state | points |
++-------------+------------+------------+------------+--------------+---------------------+---------+-------+--------+
+|           1 | Babara     | MacCaffrey | 1986-03-28 | 781-932-9754 | 0 Sage Terrace      | Waltham | VA    |   2273 |
+|           4 | Ambur      | Roseburgh  | 1974-04-14 | 407-231-8017 | 30 Arapahoe Terrace | Orlando | FL    |    457 |
++-------------+------------+------------+------------+--------------+---------------------+---------+-------+--------+
+
+7) Get the customers from customers table who have last_name end with 'field' or have the word 'mac' or 'rose':
+---------------------------------------------------------------------------------------------------------------
+SELECT * 
+FROM customers 
+-- REGEXP 'field$|mac|rose' => last_name start with 'field' or have the word 'mac' or 'rose'
+WHERE last_name REGEXP '^field|mac|rose'; 
+
+SELECT * 
+FROM customers 
+-- REGEXP 'field$|mac|rose' => last_name end with 'field' or have the word 'mac' or 'rose'
+WHERE last_name REGEXP 'field$|mac|rose';
+
+mysql> SELECT * FROM customers WHERE last_name REGEXP 'field$|mac|rose';
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+| customer_id | first_name | last_name  | birth_date | phone        | address                | city    | state | points |
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+|           1 | Babara     | MacCaffrey | 1986-03-28 | 781-932-9754 | 0 Sage Terrace         | Waltham | VA    |   2273 |
+|           2 | Ines       | Brushfield | 1986-04-13 | 804-427-9456 | 14187 Commercial Trail | Hampton | VA    |    947 |
+|           4 | Ambur      | Roseburgh  | 1974-04-14 | 407-231-8017 | 30 Arapahoe Terrace    | Orlando | FL    |    457 |
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+
+7) Get the customers from customers table who have last_name with 'ge', 'ie', or 'me':
+--------------------------------------------------------------------------------------
+SELECT * 
+FROM customers 
+-- REGEXP '[gim]e' => last_name last_name with 'ge', 'ie', or 'me'
+WHERE last_name REGEXP '[gim]e';
+
+mysql> SELECT * FROM customers WHERE last_name REGEXP '[gim]e';
++-------------+------------+------------+------------+--------------+------------------------+------------------+-------+--------+
+| customer_id | first_name | last_name  | birth_date | phone        | address                | city             | state | points |
++-------------+------------+------------+------------+--------------+------------------------+------------------+-------+--------+
+|           2 | Ines       | Brushfield | 1986-04-13 | 804-427-9456 | 14187 Commercial Trail | Hampton          | VA    |    947 |
+|           3 | Freddi     | Boagey     | 1985-02-07 | 719-724-7869 | 251 Springs Junction   | Colorado Springs | CO    |   2967 |
++-------------+------------+------------+------------+--------------+------------------------+------------------+-------+--------+
+
+Exercise:
+---------
+1) Get the customers whose first_name are ELKA or AMBUR
+--------------------------------------------------------
+SELECT * 
+FROM customers 
+WHERE first_name REGEXP 'ELKA|AMBUR';
+
+mysql> SELECT * FROM customers WHERE first_name REGEXP 'ELKA|AMBUR';
++-------------+------------+-----------+------------+--------------+---------------------+---------+-------+--------+
+| customer_id | first_name | last_name | birth_date | phone        | address             | city    | state | points |
++-------------+------------+-----------+------------+--------------+---------------------+---------+-------+--------+
+|           4 | Ambur      | Roseburgh | 1974-04-14 | 407-231-8017 | 30 Arapahoe Terrace | Orlando | FL    |    457 |
+|           6 | Elka       | Twiddell  | 1991-09-04 | 312-480-8498 | 7 Manley Drive      | Chicago | IL    |   3073 |
++-------------+------------+-----------+------------+--------------+---------------------+---------+-------+--------+
+
+2) Get the customers whose last_names end with EY or ON:
+--------------------------------------------------------
+mysql> SELECT * FROM customers WHERE last_name REGEXP 'EY$|ON$';
++-------------+------------+------------+------------+--------------+----------------------+------------------+-------+--------+
+| customer_id | first_name | last_name  | birth_date | phone        | address              | city             | state | points |
++-------------+------------+------------+------------+--------------+----------------------+------------------+-------+--------+
+|           1 | Babara     | MacCaffrey | 1986-03-28 | 781-932-9754 | 0 Sage Terrace       | Waltham          | VA    |   2273 |
+|           3 | Freddi     | Boagey     | 1985-02-07 | 719-724-7869 | 251 Springs Junction | Colorado Springs | CO    |   2967 |
+|           5 | Clemmie    | Betchley   | 1973-11-07 | NULL         | 5 Spohn Circle       | Arlington        | TX    |   3675 |
+|           7 | Ilene      | Dowson     | 1964-08-30 | 615-641-4759 | 50 Lillian Crossing  | Nashville        | TN    |   1672 |
++-------------+------------+------------+------------+--------------+----------------------+------------------+-------+--------+
+
+3) Get the customers whose last_names start with MY or contains SE:
+-------------------------------------------------------------------
+SELECT * 
+FROM customers
+-- REGEXP 'EY$|ON$' => End with EY or ON
+WHERE last_name REGEXP '^MY|SE';
+
+mysql> SELECT * FROM customers WHERE last_name REGEXP '^MY|SE';
++-------------+------------+-----------+------------+--------------+---------------------+----------+-------+--------+
+| customer_id | first_name | last_name | birth_date | phone        | address             | city     | state | points |
++-------------+------------+-----------+------------+--------------+---------------------+----------+-------+--------+
+|           4 | Ambur      | Roseburgh | 1974-04-14 | 407-231-8017 | 30 Arapahoe Terrace | Orlando  | FL    |    457 |
+|           8 | Thacher    | Naseby    | 1993-07-17 | 941-527-3977 | 538 Mosinee Center  | Sarasota | FL    |    205 |
+|          10 | Levy       | Mynett    | 1969-10-13 | 404-246-3370 | 68 Lawn Avenue      | Atlanta  | GA    |    796 |
++-------------+------------+-----------+------------+--------------+---------------------+----------+-------+--------+
+
+4) Get the customers whose last_names contain B followed by R or U:
+-------------------------------------------------------------------
+SELECT * 
+FROM customers
+-- REGEXP 'b[ru]' => last_name contains 'br' or 'bu'
+WHERE last_name REGEXP 'b[ru]';
+
+or
+
+SELECT * 
+FROM customers
+-- REGEXP 'b[ru]' => last_name contains 'br' or 'bu'
+WHERE last_name REGEXP 'br|bu';
+
+mysql> SELECT * FROM customers WHERE last_name REGEXP 'b[ru]';
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+| customer_id | first_name | last_name  | birth_date | phone        | address                | city    | state | points |
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+|           2 | Ines       | Brushfield | 1986-04-13 | 804-427-9456 | 14187 Commercial Trail | Hampton | VA    |    947 |
+|           4 | Ambur      | Roseburgh  | 1974-04-14 | 407-231-8017 | 30 Arapahoe Terrace    | Orlando | FL    |    457 |
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+
+

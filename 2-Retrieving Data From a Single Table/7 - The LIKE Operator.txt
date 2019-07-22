@@ -1,0 +1,138 @@
+7 - The LIKE Operator:
+----------------------
+
+The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.
+
+There are two wildcards often used in conjunction with the LIKE operator:
+
+% - The percent sign represents zero, one, or multiple characters
+_ - The underscore represents a single character
+
+The percent sign and the underscore can also be used in combinations!
+
+SELECT column1, column2, ...
+FROM table_name
+WHERE columnN LIKE pattern;
+
+LIKE Operator				Description
+------------------------------  ----------------------------------------------------------------------------------
+WHERE CustomerName LIKE 'a%'   --- Finds any values that start with "a"						
+WHERE CustomerName LIKE '%a'   --- Finds any values that end with "a"						
+WHERE CustomerName LIKE '%or% '--- Finds any values that have "or" in any position				
+WHERE CustomerName LIKE '_r%'  --- Finds any values that have "r" in the second position
+WHERE CustomerName LIKE 'a__%' --- Finds any values that start with "a" and are at least 3 characters in length
+WHERE ContactName LIKE 'a%o'   --- Finds any values that start with "a" and ends with "o"
+
+##################################################################################################################################
+mysql> SELECT * FROM customers;
++-------------+------------+------------+------------+--------------+------------------------+------------------+-------+--------+
+| customer_id | first_name | last_name  | birth_date | phone        | address                | city             | state | points |
++-------------+------------+------------+------------+--------------+------------------------+------------------+-------+--------+
+|           1 | Babara     | MacCaffrey | 1986-03-28 | 781-932-9754 | 0 Sage Terrace         | Waltham          | VA    |   2273 |
+|           2 | Ines       | Brushfield | 1986-04-13 | 804-427-9456 | 14187 Commercial Trail | Hampton          | VA    |    947 |
+|           3 | Freddi     | Boagey     | 1985-02-07 | 719-724-7869 | 251 Springs Junction   | Colorado Springs | CO    |   2967 |
+|           4 | Ambur      | Roseburgh  | 1974-04-14 | 407-231-8017 | 30 Arapahoe Terrace    | Orlando          | FL    |    457 |
+|           5 | Clemmie    | Betchley   | 1973-11-07 | NULL         | 5 Spohn Circle         | Arlington        | TX    |   3675 |
+|           6 | Elka       | Twiddell   | 1991-09-04 | 312-480-8498 | 7 Manley Drive         | Chicago          | IL    |   3073 |
+|           7 | Ilene      | Dowson     | 1964-08-30 | 615-641-4759 | 50 Lillian Crossing    | Nashville        | TN    |   1672 |
+|           8 | Thacher    | Naseby     | 1993-07-17 | 941-527-3977 | 538 Mosinee Center     | Sarasota         | FL    |    205 |
+|           9 | Romola     | Rumgay     | 1992-05-23 | 559-181-3744 | 3520 Ohio Trail        | Visalia          | CA    |   1486 |
+|          10 | Levy       | Mynett     | 1969-10-13 | 404-246-3370 | 68 Lawn Avenue         | Atlanta          | GA    |    796 |
++-------------+------------+------------+------------+--------------+------------------------+------------------+-------+--------+
+##################################################################################################################################
+
+1) Select the customer from customers table where last_name starts with b:
+-------------------------------------------------------------------------
+SELECT * 
+FROM customers 
+WHERE last_name LIKE 'b%';
+
+mysql> SELECT * FROM customers WHERE last_name LIKE 'b%';
++-------------+------------+------------+------------+--------------+------------------------+------------------+-------+--------+
+| customer_id | first_name | last_name  | birth_date | phone        | address                | city             | state | points |
++-------------+------------+------------+------------+--------------+------------------------+------------------+-------+--------+
+|           2 | Ines       | Brushfield | 1986-04-13 | 804-427-9456 | 14187 Commercial Trail | Hampton          | VA    |    947 |
+|           3 | Freddi     | Boagey     | 1985-02-07 | 719-724-7869 | 251 Springs Junction   | Colorado Springs | CO    |   2967 |
+|           5 | Clemmie    | Betchley   | 1973-11-07 | NULL         | 5 Spohn Circle         | Arlington        | TX    |   3675 |
++-------------+------------+------------+------------+--------------+------------------------+------------------+-------+--------+
+
+2) Select the customer from customers table where last_name include the character 'b':
+--------------------------------------------------------------------------------------
+SELECT * 
+FROM customers 
+-- %b% -> any number of character before or after b
+WHERE last_name LIKE '%b%';
+
+mysql> SELECT * FROM customers WHERE last_name LIKE '%b%';
++-------------+------------+------------+------------+--------------+------------------------+------------------+-------+--------+
+| customer_id | first_name | last_name  | birth_date | phone        | address                | city             | state | points |
++-------------+------------+------------+------------+--------------+------------------------+------------------+-------+--------+
+|           2 | Ines       | Brushfield | 1986-04-13 | 804-427-9456 | 14187 Commercial Trail | Hampton          | VA    |    947 |
+|           3 | Freddi     | Boagey     | 1985-02-07 | 719-724-7869 | 251 Springs Junction   | Colorado Springs | CO    |   2967 |
+|           4 | Ambur      | Roseburgh  | 1974-04-14 | 407-231-8017 | 30 Arapahoe Terrace    | Orlando          | FL    |    457 |
+|           5 | Clemmie    | Betchley   | 1973-11-07 | NULL         | 5 Spohn Circle         | Arlington        | TX    |   3675 |
+|           8 | Thacher    | Naseby     | 1993-07-17 | 941-527-3977 | 538 Mosinee Center     | Sarasota         | FL    |    205 |
++-------------+------------+------------+------------+--------------+------------------------+------------------+-------+--------+
+
+3) Select the customer from customers table where last_name contain the character 'b' at last:
+----------------------------------------------------------------------------------------------
+SELECT * 
+FROM customers 
+-- %y -> last_name contain the character 'y' at the last
+WHERE last_name LIKE '%y';
+
+mysql> SELECT * FROM customers WHERE last_name LIKE '%y';
++-------------+------------+------------+------------+--------------+----------------------+------------------+-------+--------+
+| customer_id | first_name | last_name  | birth_date | phone        | address              | city             | state | points |
++-------------+------------+------------+------------+--------------+----------------------+------------------+-------+--------+
+|           1 | Babara     | MacCaffrey | 1986-03-28 | 781-932-9754 | 0 Sage Terrace       | Waltham          | VA    |   2273 |
+|           3 | Freddi     | Boagey     | 1985-02-07 | 719-724-7869 | 251 Springs Junction | Colorado Springs | CO    |   2967 |
+|           5 | Clemmie    | Betchley   | 1973-11-07 | NULL         | 5 Spohn Circle       | Arlington        | TX    |   3675 |
+|           8 | Thacher    | Naseby     | 1993-07-17 | 941-527-3977 | 538 Mosinee Center   | Sarasota         | FL    |    205 |
+|           9 | Romola     | Rumgay     | 1992-05-23 | 559-181-3744 | 3520 Ohio Trail      | Visalia          | CA    |   1486 |
++-------------+------------+------------+------------+--------------+----------------------+------------------+-------+--------+
+
+4) Select the customer from customers table where last_name contain six character and the last character is 'y':
+----------------------------------------------------------------------------------------------------------------
+SELECT * 
+FROM customers 
+-- '_____y' => contain six character and the last character is 'y'
+WHERE last_name LIKE '_____y';
+
+mysql> SELECT * FROM customers WHERE last_name LIKE '_____y';
++-------------+------------+-----------+------------+--------------+----------------------+------------------+-------+--------+
+| customer_id | first_name | last_name | birth_date | phone        | address              | city             | state | points |
++-------------+------------+-----------+------------+--------------+----------------------+------------------+-------+--------+
+|           3 | Freddi     | Boagey    | 1985-02-07 | 719-724-7869 | 251 Springs Junction | Colorado Springs | CO    |   2967 |
+|           8 | Thacher    | Naseby    | 1993-07-17 | 941-527-3977 | 538 Mosinee Center   | Sarasota         | FL    |    205 |
+|           9 | Romola     | Rumgay    | 1992-05-23 | 559-181-3744 | 3520 Ohio Trail      | Visalia          | CA    |   1486 |
++-------------+------------+-----------+------------+--------------+----------------------+------------------+-------+--------+
+
+5) Get the customers from customers table whose address contain TRAIL or AVENUE:
+--------------------------------------------------------------------------------
+SELECT * 
+FROM customers
+WHERE address LIKE '%TRAIL%' OR 'AVENUE';
+
+mysql> SELECT * FROM customers WHERE address LIKE '%trail%' OR '%AVENUE%';
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+| customer_id | first_name | last_name  | birth_date | phone        | address                | city    | state | points |
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+|           2 | Ines       | Brushfield | 1986-04-13 | 804-427-9456 | 14187 Commercial Trail | Hampton | VA    |    947 |
+|           9 | Romola     | Rumgay     | 1992-05-23 | 559-181-3744 | 3520 Ohio Trail        | Visalia | CA    |   1486 |
++-------------+------------+------------+------------+--------------+------------------------+---------+-------+--------+
+
+
+6) Get the customers from customers table whose phone numbers end with 9:
+-------------------------------------------------------------------------
+SELECT * 
+FROM customers
+WHERE phone LIKE '%9';
+
+mysql> SELECT * FROM customers WHERE phone LIKE '%9';
++-------------+------------+-----------+------------+--------------+----------------------+------------------+-------+--------+
+| customer_id | first_name | last_name | birth_date | phone        | address              | city             | state | points |
++-------------+------------+-----------+------------+--------------+----------------------+------------------+-------+--------+
+|           3 | Freddi     | Boagey    | 1985-02-07 | 719-724-7869 | 251 Springs Junction | Colorado Springs | CO    |   2967 |
+|           7 | Ilene      | Dowson    | 1964-08-30 | 615-641-4759 | 50 Lillian Crossing  | Nashville        | TN    |   1672 |
++-------------+------------+-----------+------------+--------------+----------------------+------------------+-------+--------+
