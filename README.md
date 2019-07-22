@@ -10,13 +10,13 @@
             <a href="2-Retrieving Data From a Single Table/1-The Select Statement.txt">The Select Statement</a>
         </li>
         <li>
-            <a href="#select-cluse-details">The Select Clause</a>
+            <a href="2-Retrieving Data From a Single Table/2-The Select Clause.txt">The Select Clause</a>
         </li>
         <li>
-            <a href="#">The Where Clause</a>
+            <a href="2-Retrieving Data From a Single Table/3-The Where Clause.txt">The Where Clause</a>
         </li>              
         <li>
-            <a href="#">The AND OR and NOT Operators</a>
+            <a href="2-Retrieving Data From a Single Table/4-The AND OR and NOT ">The AND OR and NOT Operators</a>
         </li>
     </ol>
 </li>
