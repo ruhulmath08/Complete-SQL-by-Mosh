@@ -16,7 +16,28 @@
             <a href="2-Retrieving Data From a Single Table/3-The Where Clause.txt">The Where Clause</a>
         </li>              
         <li>
-            <a href="2-Retrieving Data From a Single Table/4-The AND OR and NOT">The AND OR and NOT Operators</a>
+            <a href="2-Retrieving Data From a Single Table/4-The AND OR and NOT Operators.txt">The AND OR and NOT Operators</a>
+        </li>
+        <li>
+            <a href="2-Retrieving Data From a Single Table/5-The IN Operator.txt">The IN Operator.txt</a>
+        </li>
+         <li>
+            <a href="2-Retrieving Data From a Single Table/6-The BETWEEN Operator.txt">The BETWEEN Operator</a>
+        </li>
+         <li>
+            <a href="2-Retrieving Data From a Single Table/7-The LIKE Operator.txt">The LIKE Operator</a>
+        </li>
+         <li>
+            <a href="2-Retrieving Data From a Single Table/8-The REGEXP Operator.txt">The REGEXP Operator</a>
+        </li>
+         <li>
+            <a href="2-Retrieving Data From a Single Table/9-The IS NULL Operator.txt">The IS NULL Operator</a>
+        </li>
+         <li>
+            <a href="2-Retrieving Data From a Single Table/10-The ORDER BY Clause.txt">The ORDER BY Clause</a>
+        </li>
+         <li>
+            <a href="2-Retrieving Data From a Single Table/11-The LIMIT Clause.txt">The LIMIT Clause</a>
         </li>
     </ol>
 </li>
